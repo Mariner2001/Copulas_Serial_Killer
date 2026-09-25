@@ -1,0 +1,85 @@
+File: ridgway_disposal_wikidates.csv  offences: 44  pairs n = 43
+
+  i  from -> to                    T_i(d)   D_i(km)
+  1  Coffield     -> Lovvorn            9       5.18
+  2  Lovvorn      -> Bonner             8       5.18
+  3  Bonner       -> Chapman            7       0.00
+  4  Chapman      -> Hinds             10       0.00
+  5  Hinds        -> Mills              1       0.00
+  6  Mills        -> Milligan          17       4.70
+  7  Milligan     -> Meehan            17      13.14
+  8  Meehan       -> Estes              5      16.59
+  9  Estes        -> Rule               6      44.29
+ 10  Rule         -> Bush              12      27.82
+ 11  Bush         -> Summers            1       3.80
+ 12  Summers      -> Sherrill          13     229.47
+ 13  Sherrill     -> Brockman          63     201.23
+ 14  Brockman     -> A. Smith          69      17.52
+ 15  A. Smith     -> Williams          11       0.00
+ 16  Williams     -> Childers          31       7.27
+ 17  Childers     -> Pitsor             2      16.38
+ 18  Pitsor       -> Gabbert            1      10.04
+ 19  Gabbert      -> Mathews            5       0.00
+ 20  Mathews      -> Malvar             8       8.03
+ 21  Malvar       -> Christensen        4      16.00
+ 22  Christensen  -> Authorlee         18      21.42
+ 23  Authorlee    -> Wims               1      38.07
+ 24  Wims         -> Antosh             8      25.51
+ 25  Antosh       -> Rois               2      19.22
+ 26  Rois         -> Naon               6       7.27
+ 27  Naon         -> Ware              40       6.13
+ 28  Ware         -> Thompson           7      39.22
+ 29  Thompson     -> Buttram           29       2.68
+ 30  Buttram      -> Abernathy         13      39.10
+ 31  Abernathy    -> Winston            7      46.50
+ 32  Winston      -> Feeney            16      41.25
+ 33  Feeney       -> Bello             13      33.70
+ 34  Bello        -> Avent             15       5.55
+ 35  Avent        -> Plager             4      33.59
+ 36  Plager       -> Nelson             2       7.48
+ 37  Nelson       -> Yates             52       7.48
+ 38  Yates        -> West              45      47.95
+ 39  West         -> C. Smith          44      27.03
+ 40  C. Smith     -> Barczak          940       2.75
+ 41  Barczak      -> Hayes            113      30.86
+ 42  Hayes        -> Reeves          1122       5.55
+ 43  Reeves       -> Yellow Robe     2873      40.57
+
+T: min 1  mean 131.9  median 11.0  max 2873  CV 3.64  (sum 5670 d = span of series)
+D: min 0.00  mean 26.9  median 16.0  max 229.5  CV 1.67
+WARNING: 5 zero displacements (same coordinates); replaced by 1.0 km for the log-normal fit. Report how zeros were handled.
+
+Kendall tau = 0.094  z = 0.89  p(asympt, 2-sided) = 0.3755  p(scipy) = 0.3838
+Spearman rho = 0.129  p = 0.4096
+
+MARGINALS (p = number of estimated parameters; BIC - AIC = p(ln n - 2))
+  T  GPD      mu=1.0 sigma=8.59 xi=1.279 (tail exponent 1+1/xi = 1.78)  AIC 387.0  BIC 392.3
+  T  Weibull  k=0.468 eta=34.9  AIC 417.2  BIC 420.8
+  D  Exponential lambda=0.0371  AIC 371.4  BIC 373.2
+  D  Log-normal mu=2.479 sigma=1.337 (median 11.9 km)  AIC 364.2  BIC 367.7
+
+COPULAS  (IFM: parametric margins; CML: ranks; GoF: rank-based bootstrap, B = 100)
+  family              IFM par tau(par)   lamU     AIC     BIC          CML par     S_n      p
+  Gaussian              0.077    0.049  0.000     0.9     2.6            0.201  0.0390  0.158
+  Student-t     0.068, 60.000    0.043  0.000     3.7     7.2    0.195, 60.000  0.0399  0.178
+  Clayton               0.020    0.010  0.000     1.1     2.9            0.252  0.0447  0.079
+  Gumbel                1.055    0.052  0.071     1.6     3.4            1.100  0.0471  0.020
+
+  Gumbel moment estimate theta_tau = 1/(1 - tau) = 1.103
+  Empirical: of 8 intervals above their P80, 3 were followed by a displacement above its P80 (expected under independence: 1.6)
+  Empirical: of 4 intervals above their P90, 0 were followed by a displacement above its P90 (expected under independence: 0.4)
+
+  Pseudo-observations for Fig. 1 (IFM):
+  (0.46,0.27)(0.43,0.27)(0.39,0.03)(0.49,0.03)(0.00,0.03)(0.61,0.24)(0.61,0.53)(0.31,0.60)(0.35,0.84)(0.53,0.74)(0.00,0.20)(0.55,0.99)(0.84,0.98)(0.85,0.61)(0.51,0.03)(0.73,0.36)(0.10,0.59)(0.00,0.45)(0.31,0.03)(0.43,0.38)(0.25,0.59)(0.63,0.67)(0.00,0.81)(0.43,0.72)(0.10,0.64)(0.35,0.36)(0.78,0.31)(0.39,0.81)(0.72,0.13)(0.55,0.81)(0.39,0.85)(0.60,0.82)(0.55,0.78)(0.59,0.28)(0.25,0.78)(0.10,0.36)(0.81,0.36)(0.79,0.85)(0.79,0.73)(0.98,0.14)(0.89,0.76)(0.98,0.28)(0.99,0.82)
+
+  Empirical copula on the diagonal (rank pseudo-observations):
+   u = 0.10: C_n = 0.023
+   u = 0.20: C_n = 0.047
+   u = 0.30: C_n = 0.070
+   u = 0.40: C_n = 0.140
+   u = 0.50: C_n = 0.302
+   u = 0.60: C_n = 0.372
+   u = 0.70: C_n = 0.488
+   u = 0.80: C_n = 0.698
+   u = 0.90: C_n = 0.814
+   u = 0.95: C_n = 0.907

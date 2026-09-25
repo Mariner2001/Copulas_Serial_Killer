@@ -1,0 +1,92 @@
+File: chikatilo.csv  offences: 51  pairs n = 50
+
+  i  from -> to                    T_i(d)   D_i(km)
+  1  Zakotnova    -> Tkachenko        986      66.18
+  2  Tkachenko    -> Biryuk           282      45.71
+  3  Biryuk       -> Volobuyeva        43     275.54
+  4  Volobuyeva   -> Pozhidayev        19      24.11
+  5  Pozhidayev   -> Kuprina            3     299.57
+  6  Kuprina      -> Karabelnikov      23      26.31
+  7  Karabelnikov -> Kuzmin             7       0.00
+  8  Kuzmin       -> Stalmachenok      87      21.61
+  9  Stalmachenok -> Dunenkova        211      56.62
+ 10  Dunenkova    -> Kutsyuba          10      59.45
+ 11  Kutsyuba     -> Gudkov            20      59.45
+ 12  Gudkov       -> Unknown woma      23      56.62
+ 13  Unknown woma -> Chuchulina        18      16.90
+ 14  Chuchulina   -> Shevkun           38       5.12
+ 15  Shevkun      -> Markov            61      34.13
+ 16  Markov       -> Shalapinina       13      29.14
+ 17  Shalapinina  -> Ryabenko          43       0.00
+ 18  Ryabenko     -> Ptashnikov        32      56.62
+ 19  Ptashnikov   -> T. and S. Pe      62      16.90
+ 20  T. and S. Pe -> Bakulina          28      49.27
+ 21  Bakulina     -> Illarionov        18      51.79
+ 22  Illarionov   -> Lemesheva          9      65.97
+ 23  Lemesheva    -> Tsana              9      59.88
+ 24  Tsana        -> Golosovskaya       5       0.00
+ 25  Golosovskaya -> Alekseyeva         5       6.76
+ 26  Alekseyeva   -> Unknown woma       2    2423.81
+ 27  Unknown woma -> Seydaliyeva        4       0.00
+ 28  Seydaliyeva  -> Chepel            15    2423.81
+ 29  Chepel       -> Luchinskaya        9       6.76
+ 30  Luchinskaya  -> Pokhlistova      329     917.26
+ 31  Pokhlistova  -> Gulyayeva         26     872.89
+ 32  Gulyayeva    -> Makarenkov       627    1668.72
+ 33  Makarenkov   -> Bilovetsky        74    1940.20
+ 34  Bilovetsky   -> Tereshonok        48    1381.30
+ 35  Tereshonok   -> Unknown woma     200    1481.33
+ 36  Unknown woma -> Voronko           43     139.17
+ 37  Voronko      -> Muratov           60     141.93
+ 38  Muratov      -> Ryzhova          229      17.00
+ 39  Ryzhova      -> Dyakonov          72      65.74
+ 40  Dyakonov     -> Moiseyev          40    1009.69
+ 41  Moiseyev     -> Varga             60    1004.64
+ 42  Varga        -> Khobotov           9      55.26
+ 43  Khobotov     -> Kravchenko       139       0.00
+ 44  Kravchenko   -> Makarov           52      67.49
+ 45  Makarov      -> Zuyeva            28      75.18
+ 46  Zuyeva       -> Petrov           115      75.18
+ 47  Petrov       -> Fomin             17      39.09
+ 48  Fomin        -> Gromov            64      47.70
+ 49  Gromov       -> Tishchenko        13      12.51
+ 50  Tishchenko   -> Korostik           7      12.51
+
+T: min 2  mean 86.7  median 30.0  max 986  CV 1.95  (sum 4337 d = span of series)
+D: min 0.00  mean 345.3  median 56.6  max 2423.8  CV 1.87
+WARNING: 5 zero displacements (same coordinates); replaced by 1.0 km for the log-normal fit. Report how zeros were handled.
+
+Kendall tau = 0.202  z = 2.07  p(asympt, 2-sided) = 0.0384  p(scipy) = 0.0409
+Spearman rho = 0.269  p = 0.0592
+
+MARGINALS (p = number of estimated parameters; BIC - AIC = p(ln n - 2))
+  T  GPD      mu=2.0 sigma=32.22 xi=0.704 (tail exponent 1+1/xi = 2.42)  AIC 523.7  BIC 529.4
+  T  Weibull  k=0.709 eta=65.1  AIC 535.8  BIC 539.6
+  D  Exponential lambda=0.0029  AIC 686.5  BIC 688.4
+  D  Log-normal mu=4.043 sigma=2.100 (median 57.0 km)  AIC 624.4  BIC 628.2
+
+COPULAS  (IFM: parametric margins; CML: ranks; GoF: rank-based bootstrap, B = 1000)
+  family              IFM par tau(par)   lamU     AIC     BIC          CML par     S_n      p
+  Gaussian              0.052    0.033  0.000     1.8     3.7            0.263  0.0496  0.023
+  Student-t     0.293, 11.080    0.189  0.024    -1.0     2.9     0.353, 1.653  0.0271  0.452
+  Clayton               0.000    0.000  0.000     2.0     3.9            0.571  0.0309  0.306
+  Gumbel                1.174    0.148  0.195    -1.0     0.9            1.236  0.0445  0.043
+
+  Gumbel moment estimate theta_tau = 1/(1 - tau) = 1.253
+  Empirical: of 10 intervals above their P80, 3 were followed by a displacement above its P80 (expected under independence: 2.0)
+  Empirical: of 5 intervals above their P90, 1 were followed by a displacement above its P90 (expected under independence: 0.5)
+
+  Pseudo-observations for Fig. 1 (IFM):
+  (0.99,0.53)(0.94,0.46)(0.60,0.77)(0.36,0.34)(0.03,0.79)(0.42,0.36)(0.14,0.03)(0.77,0.32)(0.91,0.50)(0.20,0.51)(0.38,0.51)(0.42,0.50)(0.35,0.28)(0.56,0.13)(0.69,0.40)(0.26,0.37)(0.60,0.03)(0.51,0.50)(0.70,0.28)(0.47,0.47)(0.35,0.48)(0.18,0.53)(0.18,0.51)(0.09,0.03)(0.09,0.15)(0.00,0.96)(0.06,0.03)(0.30,0.96)(0.18,0.15)(0.95,0.91)(0.45,0.90)(0.98,0.95)(0.74,0.95)(0.63,0.94)(0.91,0.94)(0.60,0.66)(0.69,0.67)(0.92,0.28)(0.73,0.53)(0.58,0.91)(0.69,0.91)(0.18,0.49)(0.86,0.03)(0.65,0.53)(0.47,0.55)(0.83,0.55)(0.33,0.43)(0.70,0.47)(0.26,0.23)(0.14,0.23)
+
+  Empirical copula on the diagonal (rank pseudo-observations):
+   u = 0.10: C_n = 0.040
+   u = 0.20: C_n = 0.120
+   u = 0.30: C_n = 0.140
+   u = 0.40: C_n = 0.220
+   u = 0.50: C_n = 0.300
+   u = 0.60: C_n = 0.440
+   u = 0.70: C_n = 0.500
+   u = 0.80: C_n = 0.660
+   u = 0.90: C_n = 0.820
+   u = 0.95: C_n = 0.920

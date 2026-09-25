@@ -1,0 +1,60 @@
+File: sutcliffe.csv  offences: 20  pairs n = 19
+
+  i  from -> to                    T_i(d)   D_i(km)
+  1  Rogulskyj    -> Smelt             41      15.84
+  2  Smelt        -> McCann            76      25.07
+  3  McCann       -> Jackson           82       2.10
+  4  Jackson      -> Claxton          110       2.84
+  5  Claxton      -> Richardson       272       0.33
+  6  Richardson   -> Atkinson          77      18.30
+  7  Atkinson     -> MacDonald         64      15.76
+  8  MacDonald    -> Long              14      13.10
+  9  Long         -> Jordan            83      51.92
+ 10  Jordan       -> Moore             74      63.61
+ 11  Moore        -> Pearson           38      14.75
+ 12  Pearson      -> Rytka             10      16.94
+ 13  Rytka        -> Millward         105      36.18
+ 14  Millward     -> Whitaker         323      36.11
+ 15  Whitaker     -> Leach            151      11.72
+ 16  Leach        -> Walls            353       5.52
+ 17  Walls        -> Bandara           35       6.72
+ 18  Bandara      -> Sykes             42      24.08
+ 19  Sykes        -> Hill              12      24.33
+
+T: min 10  mean 103.3  median 76.0  max 353  CV 0.99  (sum 1962 d = span of series)
+D: min 0.33  mean 20.3  median 15.8  max 63.6  CV 0.83
+
+Kendall tau = -0.076  z = -0.45  p(asympt, 2-sided) = 0.6492  p(scipy) = 0.6787
+Spearman rho = -0.151  p = 0.5375
+
+MARGINALS (p = number of estimated parameters; BIC - AIC = p(ln n - 2))
+  T  GPD      mu=10.0 sigma=83.49 xi=0.107 (tail exponent 1+1/xi = 10.32)  AIC 216.2  BIC 219.0
+  T  Weibull  k=1.107 eta=107.6  AIC 217.9  BIC 219.8
+  D  Exponential lambda=0.0493  AIC 154.4  BIC 155.3
+  D  Log-normal mu=2.534 sigma=1.221 (median 12.6 km)  AIC 161.8  BIC 163.7
+
+COPULAS  (IFM: parametric margins; CML: ranks; GoF: rank-based bootstrap, B = 1000)
+  family              IFM par tau(par)   lamU     AIC     BIC          CML par     S_n      p
+  Gaussian             -0.124   -0.079  0.000     1.1     2.1           -0.249  0.0824  0.097
+  Student-t    -0.132, 60.000   -0.084  0.000     3.7     5.6   -0.241, 60.000  0.0807  0.057
+  Clayton               0.000    0.000  0.000     2.0     2.9            0.000  0.0408  0.407
+  Gumbel                1.000    0.000  0.000     2.0     2.9            1.000  0.0408  0.350
+
+  Gumbel moment estimate theta_tau = 1/(1 - tau) = 1.000
+  Empirical: of 3 intervals above their P80, 0 were followed by a displacement above its P80 (expected under independence: 0.6)
+  Empirical: of 1 intervals above their P90, 0 were followed by a displacement above its P90 (expected under independence: 0.1)
+
+  Pseudo-observations for Fig. 1 (IFM):
+  (0.31,0.57)(0.53,0.71)(0.56,0.07)(0.68,0.11)(0.93,0.00)(0.54,0.62)(0.46,0.57)(0.05,0.51)(0.57,0.88)(0.52,0.91)(0.28,0.55)(0.00,0.60)(0.66,0.81)(0.96,0.81)(0.79,0.48)(0.97,0.25)(0.26,0.30)(0.31,0.70)(0.02,0.70)
+
+  Empirical copula on the diagonal (rank pseudo-observations):
+   u = 0.10: C_n = 0.000
+   u = 0.20: C_n = 0.000
+   u = 0.30: C_n = 0.053
+   u = 0.40: C_n = 0.158
+   u = 0.50: C_n = 0.263
+   u = 0.60: C_n = 0.421
+   u = 0.70: C_n = 0.526
+   u = 0.80: C_n = 0.684
+   u = 0.90: C_n = 0.895
+   u = 0.95: C_n = 1.000
