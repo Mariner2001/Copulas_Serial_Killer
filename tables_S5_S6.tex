@@ -1,0 +1,46 @@
+\begin{table}[htbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Sensitivity of the parametric fits of the displacements and of the IFM copula estimates to the value assigned to zero displacements (consecutive offences recorded at the same locality or recovery cluster); the value used in the paper (1~km) is in bold. `Censored' rows treat these displacements as left-censored below the stated value (log-normal fit only). Rank-based results (Kendall's $\tau$, Spearman's $\rho_S$, CML estimates, goodness-of-fit tests and Table~7 of the paper) use the recorded zeros as tied smallest values and do not depend on this choice.}
+\begin{tabular}{lcccccccc}
+\toprule
+ & \multicolumn{2}{c}{Log-normal} & \multicolumn{2}{c}{AIC} & \multicolumn{4}{c}{IFM copula estimates}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-9}
+Zero displacement & $\hat\mu$ & $\hat\sigma$ & Log-normal & Exponential & Gaussian $\hat\rho$ & Student-$t$ $\hat\rho$ ($\hat\nu$) & Clayton $\hat\theta$ & Gumbel $\hat\theta$\\
+\midrule
+\multicolumn{9}{l}{\textit{Chikatilo} (5 zeros; smallest positive displacement 5.1~km; $\hat\tau=0.202$, CML Gumbel $\hat\theta=1.236$)}\\
+0.1~km & 3.81 & 2.60 & 622.7 & 686.4 & 0.067 & 0.269 (13.0) & 0.000 & 1.201\\
+0.5~km & 3.97 & 2.24 & 623.9 & 686.4 & 0.057 & 0.288 (11.5) & 0.000 & 1.183\\
+\textbf{1~km} & \textbf{4.04} & \textbf{2.10} & \textbf{624.4} & \textbf{686.5} & \textbf{0.052} & \textbf{0.293 (11.1)} & \textbf{0.000} & \textbf{1.174}\\
+2~km & 4.11 & 1.97 & 625.1 & 686.5 & 0.045 & 0.295 (10.8) & 0.000 & 1.163\\
+5~km & 4.20 & 1.83 & 626.6 & 686.6 & 0.034 & 0.288 (10.8) & 0.000 & 1.148\\
+censored $<2$~km & 4.02 & 2.16 & --- & --- & --- & --- & --- & ---\\
+censored $<5$~km & 4.11 & 2.00 & --- & --- & --- & --- & --- & ---\\
+\midrule
+\multicolumn{9}{l}{\textit{Ridgway} (5 zeros; smallest positive displacement 2.0~km; $\hat\tau=0.088$, CML Gumbel $\hat\theta=1.092$)}\\
+0.1~km & 2.16 & 1.92 & 368.1 & 369.9 & 0.068 & 0.078 (60.0) & 0.000 & 1.038\\
+0.5~km & 2.35 & 1.52 & 363.7 & 370.1 & 0.068 & 0.076 (60.0) & 0.000 & 1.025\\
+\textbf{1~km} & \textbf{2.43} & \textbf{1.36} & \textbf{361.5} & \textbf{370.3} & \textbf{0.067} & \textbf{0.073 (60.0)} & \textbf{0.000} & \textbf{1.018}\\
+2~km & 2.51 & 1.23 & 359.7 & 370.7 & 0.065 & 0.069 (60.0) & 0.000 & 1.010\\
+5~km & 2.61 & 1.10 & 359.3 & 371.8 & 0.059 & 0.058 (60.0) & 0.000 & 1.000\\
+censored $<2$~km & 2.43 & 1.37 & --- & --- & --- & --- & --- & ---\\
+censored $<5$~km & 2.53 & 1.21 & --- & --- & --- & --- & --- & ---\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Stability of the trigger. Empirical 85th percentile of the intervals ($t_{85}$) and three times the median interval, in days, as they would have been estimated after the first $k$ linked offences ($k-1$ intervals); the last column of each row gives the values for the complete series and the percentile of the observed intervals to which three times the median corresponds.}
+\begin{tabular}{llcccccc}
+\toprule
+Series & & $k=15$ & $k=20$ & $k=25$ & $k=30$ & $k=40$ & Complete series\\
+\midrule
+Sutcliffe ($n=19$) & $t_{85}$ & 118 & --- & --- & --- & --- & 187\\
+ & $3\times t_{50}$ & 230 & --- & --- & --- & --- & 228 (84th percentile)\\
+Chikatilo ($n=50$) & $t_{85}$ & 215 & 124 & 76 & 62 & 203 & 131\\
+ & $3\times t_{50}$ & 69 & 96 & 69 & 57 & 84 & 90 (82nd percentile)\\
+Ridgway ($n=43$) & $t_{85}$ & 19 & 22 & 18 & 23 & 35 & 50\\
+ & $3\times t_{50}$ & 28 & 24 & 24 & 24 & 27 & 33 (77th percentile)\\
+\bottomrule
+\end{tabular}
+\end{table}

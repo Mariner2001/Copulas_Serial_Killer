@@ -1,0 +1,52 @@
+(1) ZERO DISPLACEMENTS
+
+Chikatilo: 5 zero pairs (Karabelnikova-Kuzmin; Shalapinina-Ryabenko; Tsana-Golosovskaya; Unknown woman Tashkent-Seydaliyeva; Khobotov-Kravchenko); smallest positive displacement 5.12 km
+  rank-based (recorded zeros, tied): tau = 0.202, rho_S = 0.269, CML Gumbel = 1.236
+  zero -> 0.1 km: LN mu 3.81 sigma 2.60 AIC 622.7 | Exp AIC 686.4 | IFM: Ga 0.067, t 0.269 (13.0), Cl 0.000, Gu 1.201
+  zero -> 0.5 km: LN mu 3.97 sigma 2.24 AIC 623.9 | Exp AIC 686.4 | IFM: Ga 0.057, t 0.288 (11.5), Cl 0.000, Gu 1.183
+  zero -> 1.0 km: LN mu 4.04 sigma 2.10 AIC 624.4 | Exp AIC 686.5 | IFM: Ga 0.052, t 0.293 (11.1), Cl 0.000, Gu 1.174
+  zero -> 2.0 km: LN mu 4.11 sigma 1.97 AIC 625.1 | Exp AIC 686.5 | IFM: Ga 0.045, t 0.295 (10.8), Cl 0.000, Gu 1.163
+  zero -> 5.0 km: LN mu 4.20 sigma 1.83 AIC 626.6 | Exp AIC 686.6 | IFM: Ga 0.034, t 0.288 (10.8), Cl 0.000, Gu 1.148
+  left-censored below 2 km: LN mu 4.02 sigma 2.16
+  left-censored below 5 km: LN mu 4.11 sigma 2.00
+
+Ridgway: 5 zero pairs (Bonner-Chapman; Chapman-Hinds; Hinds-Mills; A. Smith-Williams; Williams-Mathews); smallest positive displacement 2.01 km
+  rank-based (recorded zeros, tied): tau = 0.088, rho_S = 0.120, CML Gumbel = 1.092
+  zero -> 0.1 km: LN mu 2.16 sigma 1.92 AIC 368.1 | Exp AIC 369.9 | IFM: Ga 0.068, t 0.078 (60.0), Cl 0.000, Gu 1.038
+  zero -> 0.5 km: LN mu 2.35 sigma 1.52 AIC 363.7 | Exp AIC 370.1 | IFM: Ga 0.068, t 0.076 (60.0), Cl 0.000, Gu 1.025
+  zero -> 1.0 km: LN mu 2.43 sigma 1.36 AIC 361.5 | Exp AIC 370.3 | IFM: Ga 0.067, t 0.073 (60.0), Cl 0.000, Gu 1.018
+  zero -> 2.0 km: LN mu 2.51 sigma 1.23 AIC 359.7 | Exp AIC 370.7 | IFM: Ga 0.065, t 0.069 (60.0), Cl 0.000, Gu 1.010
+  zero -> 5.0 km: LN mu 2.61 sigma 1.10 AIC 359.3 | Exp AIC 371.8 | IFM: Ga 0.059, t 0.058 (60.0), Cl 0.000, Gu 1.000
+  left-censored below 2 km: LN mu 2.43 sigma 1.37
+  left-censored below 5 km: LN mu 2.53 sigma 1.21
+
+(2) OPERATIONAL PARAMETERS: point estimates, bootstrap 95% intervals (B = 2000, seed 2026) and stability
+
+Sutcliffe (n = 19):
+  median interval t50 (d)                76.0   95% bootstrap interval [41.0, 105.0]
+  85th percentile t85 (d)               187.3   95% bootstrap interval [83.0, 332.0]
+  habitual radius r80 (km)               29.5   95% bootstrap interval [17.5, 51.9]
+  conditional radius r80(t85) (km)       29.5   95% bootstrap interval [17.5, 59.4]
+  three times the median = 228 d, i.e. the 84th percentile of the observed intervals
+  estimates available after k linked offences: k = 15: t85 = 118, 3 x median = 230; k = 20: t85 = 187, 3 x median = 228
+
+Chikatilo (n = 50):
+  median interval t50 (d)                30.0   95% bootstrap interval [18.5, 50.0]
+  85th percentile t85 (d)               130.6   95% bootstrap interval [62.0, 263.4]
+  habitual radius r80 (km)              414.2   95% bootstrap interval [69.0, 1381.3]
+  conditional radius r80(t85) (km)     1615.7   95% bootstrap interval [249.5, 2378.6]
+  three times the median = 90 d, i.e. the 82nd percentile of the observed intervals
+  estimates available after k linked offences: k = 15: t85 = 215, 3 x median = 69; k = 20: t85 = 124, 3 x median = 96; k = 25: t85 = 76, 3 x median = 69; k = 30: t85 = 62, 3 x median = 57; k = 40: t85 = 203, 3 x median = 84; k = 51: t85 = 131, 3 x median = 90
+
+Ridgway (n = 43):
+  median interval t50 (d)                11.0   95% bootstrap interval [7.0, 17.0]
+  85th percentile t85 (d)                49.9   95% bootstrap interval [19.0, 671.6]
+  habitual radius r80 (km)               38.7   95% bootstrap interval [26.4, 43.1]
+  conditional radius r80(t85) (km)       41.3   95% bootstrap interval [28.7, 201.2]
+  three times the median = 33 d, i.e. the 77th percentile of the observed intervals
+  estimates available after k linked offences: k = 15: t85 = 19, 3 x median = 28; k = 20: t85 = 22, 3 x median = 24; k = 25: t85 = 18, 3 x median = 24; k = 30: t85 = 23, 3 x median = 24; k = 40: t85 = 35, 3 x median = 27; k = 44: t85 = 50, 3 x median = 33
+
+Table 7 rows (estimate and bootstrap 95% interval):
+  Sutcliffe: t50 76 (41--105); t85 187 (83--332); r80 29.5 (17.5--51.9); r80(t85) 29.5 (17.5--59.4)
+  Chikatilo: t50 30 (18.5--50); t85 131 (62--263); r80 414.2 (69.0--1381.3); r80(t85) 1615.7 (249.5--2378.6)
+  Ridgway: t50 11 (7.0--17); t85 49.9 (19--672); r80 38.7 (26.4--43.1); r80(t85) 41.3 (28.7--201.2)
