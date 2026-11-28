@@ -1,0 +1,263 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,longtable}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{geometry}
+\geometry{a4paper,top=2.2cm,bottom=2.2cm,left=2cm,right=2cm}
+\renewcommand{\thetable}{S\arabic{table}}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0.5em}
+\title{\textbf{Supplementary material}\\[0.3em]\large Copula-based analysis of space-time dependence in serial homicide: evidence from three high-volume, long-duration series}
+\date{}
+\begin{document}
+\maketitle
+
+\section*{S1. Data, sources and conventions}
+Each series lists the offences in chronological order; $T_i$ (days) and $D_i$ (km) are the interval and the haversine distance ($R=6{,}371$~km) from offence $i$ to offence $i+1$. The files \texttt{sutcliffe.csv}, \texttt{chikatilo.csv} and \texttt{ridgway\_disposal.csv} (columns \texttt{label, date, lat, lon}) and the script \texttt{copula\_check.py} reproduce every table and figure of the paper; variants used in the sensitivity analyses (Table~S4) are also provided. The script \texttt{revision\_checks.py} reproduces Tables~S5 and~S6 and the bootstrap intervals of Table~7 of the paper.
+
+\textbf{Sutcliffe (Table S1).} Attack dates and street-level coordinates of the 20 attacks, as in the original chronology (from Cross, 1981, and Bilton, 2003). Displacements are computed from the coordinates; the displacement column of the first version of the paper did not match them and has been corrected.
+
+\textbf{Chikatilo (Table S2).} The 52 murders of which he was convicted (Laura Sarkisyan, whose murder he was cleared of at trial, is excluded); the double murder of Tatyana and Svetlana Petrosyan counts as one offence, giving 51 offences and 50 pairs. Dates and localities were compiled from the victim table of the English-language Wikipedia article on Chikatilo, which draws on Cullen (1993), Krivich and Ol'gin (1993) and Conradi (1992). Coordinates are those of the locality (town, settlement, park or railway station) and are approximate (errors of up to about 10~km). Dates marked $\dagger$ are imprecise in the sources and were fixed as follows, preserving the order of the sources: July 1983 (two victims) $\to$ 10 and 20 July; ``July--September 1983'' (unknown woman, between Gudkov and Chuchulina) $\to$ 1 September; ``after 19 September 1983'' $\to$ 19 September; ``c.\ 28 July 1984'' $\to$ 28 July; ``8--11 August 1984'' $\to$ 9 August; ``1--4 April 1988'' $\to$ 2 April. Other lists give 31 July 1985 for Pokhlistova and 8 March 1989 for Ryzhova. Five pairs of consecutive offences share a locality ($D_i=0$). The rank-based analyses use these zeros as tied smallest values; for the parametric fits they are set to 1~km, below the smallest positive displacement (5.1~km), and Table~S5 shows the effect of other values.
+
+\textbf{Ridgway (Table S3).} The 44 victims with known dates among the 48 of the 2003 plea (the four unidentified victims are excluded). Dates of last sighting, last-sighting areas and body-recovery sites follow the list released at the plea (Associated Press, 5 November 2003), based on the prosecutor's summary (Maleng, 2003). Offences are located at the body-recovery site (coordinates of the recovery cluster, approximate); for Denise Bush, whose remains were found partly south of Seattle and partly in Tigard, Oregon, the first site is used. Last-sighting areas, known only at corridor level, are used in a sensitivity analysis. Dates marked $\dagger$ are approximate in the plea list and were fixed as follows: Sherrill (20 October--7 November 1982) $\to$ 20 October; Brockman (about 24 December 1982) $\to$ 24 December; Rois (31 May--13 June 1983) $\to$ 2 June; Barczak (October 1986) $\to$ 17 October; Hayes (1987, last seen leaving a Portland jail) $\to$ 7 February 1987; Reeves (1990) $\to$ 5 March 1990; Yellow Robe (1998) $\to$ 15 January 1998, the last four from other public lists. Five pairs of consecutive offences share a recovery cluster ($D_i=0$; four victims at the Green River and three at Star Lake). They are treated in the same way (smallest positive displacement 2.0~km; Table~S5).
+
+\begin{table}[htbp]
+\centering\small
+\caption{Peter Sutcliffe: chronology of the 20 attacks (M\,=\,murder; A\,=\,attempted murder). Coordinates in decimal degrees; $T_i$ and $D_i$ lead from each attack to the next.\newline Source: Authors' own work}
+\begin{tabular}{clcccrr}
+\toprule
+\# & Victim & Date & M/A & Latitude, Longitude & $T_i$ (d) & $D_i$ (km)\\
+\midrule
+1 & Anna Rogulskyj & 05/07/1975 & A & 53.867, $-1.910$ & 41 & 15.8\\
+2 & Olive Smelt & 15/08/1975 & A & 53.726, $-1.876$ & 76 & 25.1\\
+3 & Wilma McCann & 30/10/1975 & M & 53.826, $-1.534$ & 82 & 2.1\\
+4 & Emily Jackson & 20/01/1976 & M & 53.810, $-1.517$ & 110 & 2.8\\
+5 & Marcella Claxton & 09/05/1976 & A & 53.834, $-1.502$ & 272 & 0.3\\
+6 & Irene Richardson & 05/02/1977 & M & 53.834, $-1.497$ & 77 & 18.3\\
+7 & Patricia Atkinson & 23/04/1977 & M & 53.811, $-1.773$ & 64 & 15.8\\
+8 & Jayne MacDonald & 26/06/1977 & M & 53.815, $-1.533$ & 14 & 13.1\\
+9 & Maureen Long & 10/07/1977 & A & 53.781, $-1.724$ & 83 & 51.9\\
+10 & Jean Jordan & 01/10/1977 & M & 53.443, $-2.267$ & 74 & 63.6\\
+11 & Marilyn Moore & 14/12/1977 & A & 53.819, $-1.540$ & 38 & 14.8\\
+12 & Yvonne Pearson & 21/01/1978 & M & 53.803, $-1.763$ & 10 & 16.9\\
+13 & Helen Rytka & 31/01/1978 & M & 53.651, $-1.780$ & 105 & 36.2\\
+14 & Vera Millward & 16/05/1978 & M & 53.463, $-2.227$ & 323 & 36.1\\
+15 & Josephine Whitaker & 04/04/1979 & M & 53.715, $-1.882$ & 151 & 11.7\\
+16 & Barbara Leach & 02/09/1979 & M & 53.793, $-1.762$ & 353 & 5.5\\
+17 & Marguerite Walls & 20/08/1980 & M & 53.804, $-1.680$ & 35 & 6.7\\
+18 & Upadhya Bandara & 24/09/1980 & A & 53.817, $-1.580$ & 42 & 24.1\\
+19 & Theresa Sykes & 05/11/1980 & A & 53.652, $-1.817$ & 12 & 24.3\\
+20 & Jacqueline Hill & 17/11/1980 & M & 53.820, $-1.580$ & --- & ---\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+{\small
+\begin{longtable}{rllp{3.6cm}crr}
+\caption{Andrei Chikatilo: chronology of the 51 offences (52 convictions). $\dagger$: imprecise date (see S1).\newline Source: Authors' own work}\\
+\toprule
+\# & Victim & Date & Locality & Latitude, Longitude & $T_i$ (d) & $D_i$ (km)\\
+\midrule
+\endfirsthead
+\toprule
+\# & Victim & Date & Locality & Latitude, Longitude & $T_i$ (d) & $D_i$ (km)\\
+\midrule
+\endhead
+1 & Zakotnova & 22/12/1978 & Shakhty & 47.709, 40.216 & 986 & 66.2\\
+2 & Tkachenko & 03/09/1981 & Rostov (Don bank) & 47.210, 39.735 & 282 & 45.7\\
+3 & Biryuk & 12/06/1982 & Donskoy (Bagayevsky) & 47.390, 40.280 & 43 & 275.5\\
+4 & Volobuyeva & 25/07/1982 & Krasnodar airport & 45.034, 39.170 & 19 & 24.1\\
+5 & Pozhidayev & 13/08/1982 & Enem (Adygea) & 44.925, 38.905 & 3 & 299.6\\
+6 & Kuprina & 16/08/1982 & Kazachi Lagerya & 47.500, 40.050 & 23 & 26.3\\
+7 & Karabelnikova & 08/09/1982 & Shakhty & 47.709, 40.216 & 7 & 0.0\\
+8 & Kuzmin & 15/09/1982 & Shakhty & 47.709, 40.216 & 87 & 21.6\\
+9 & Stalmachenok & 11/12/1982 & Novoshakhtinsk & 47.758, 39.936 & 211 & 56.6\\
+10 & Dunenkova & 10/07/1983$^\dagger$ & Rostov (Aviators' Park) & 47.258, 39.790 & 10 & 59.5\\
+11 & Kutsyuba & 20/07/1983$^\dagger$ & Shakhty & 47.709, 40.216 & 20 & 59.5\\
+12 & Gudkov & 09/08/1983 & Rostov (Aviators' Park) & 47.258, 39.790 & 23 & 56.6\\
+13 & Unknown woman 1983 & 01/09/1983$^\dagger$ & Novoshakhtinsk & 47.758, 39.936 & 18 & 16.9\\
+14 & Chuchulina & 19/09/1983$^\dagger$ & Kirpichnaya st. & 47.735, 40.160 & 38 & 5.1\\
+15 & Shevkun & 27/10/1983 & Shakhty & 47.709, 40.216 & 61 & 34.1\\
+16 & Markov & 27/12/1983 & Novocherkassk & 47.411, 40.104 & 13 & 29.1\\
+17 & Shalapinina & 09/01/1984 & Rostov (Aviators' Park) & 47.258, 39.790 & 43 & 0.0\\
+18 & Ryabenko & 21/02/1984 & Rostov (Aviators' Park) & 47.258, 39.790 & 32 & 56.6\\
+19 & Ptashnikov & 24/03/1984 & Novoshakhtinsk & 47.758, 39.936 & 62 & 16.9\\
+20 & T. and S. Petrosyan & 25/05/1984 & Kirpichnaya st. & 47.735, 40.160 & 28 & 49.3\\
+21 & Bakulina & 22/06/1984 & Bagayevskaya & 47.320, 40.390 & 18 & 51.8\\
+22 & Illarionov & 10/07/1984 & Rostov (centre) & 47.222, 39.719 & 9 & 66.0\\
+23 & Lemesheva & 19/07/1984 & Kirpichnaya st. & 47.735, 40.160 & 9 & 59.9\\
+24 & Tsana & 28/07/1984$^\dagger$ & Rostov (Aviators' Park) & 47.258, 39.790 & 5 & 0.0\\
+25 & Golosovskaya & 02/08/1984 & Rostov (Aviators' Park) & 47.258, 39.790 & 5 & 6.8\\
+26 & Alekseyeva & 07/08/1984 & Rostov (Don bank) & 47.210, 39.735 & 2 & 2423.8\\
+27 & Unknown woman Tashkent & 09/08/1984$^\dagger$ & Tashkent & 41.300, 69.240 & 4 & 0.0\\
+28 & Seydaliyeva & 13/08/1984 & Tashkent & 41.300, 69.240 & 15 & 2423.8\\
+29 & Chepel & 28/08/1984 & Rostov (Don bank) & 47.210, 39.735 & 9 & 6.8\\
+30 & Luchinskaya & 06/09/1984 & Rostov (Aviators' Park) & 47.258, 39.790 & 329 & 917.3\\
+31 & Pokhlistova & 01/08/1985 & Domodedovo (Vostryakovo) & 55.410, 37.760 & 26 & 872.9\\
+32 & Gulyayeva & 27/08/1985 & Shakhty & 47.709, 40.216 & 627 & 1668.7\\
+33 & Makarenkov & 16/05/1987 & Revda & 56.798, 59.908 & 74 & 1940.2\\
+34 & Bilovetsky & 29/07/1987 & Zaporizhzhia & 47.838, 35.140 & 48 & 1381.3\\
+35 & Tereshonok & 15/09/1987 & Leningrad & 59.939, 30.316 & 200 & 1481.3\\
+36 & Unknown woman 1988 & 02/04/1988$^\dagger$ & Krasny Sulin & 47.883, 40.067 & 43 & 139.2\\
+37 & Voronko & 15/05/1988 & Ilovaisk & 47.925, 38.201 & 60 & 141.9\\
+38 & Muratov & 14/07/1988 & Donleskhoz st. & 47.840, 40.100 & 229 & 17.0\\
+39 & Ryzhova & 28/02/1989 & Shakhty & 47.709, 40.216 & 72 & 65.7\\
+40 & Dyakonov & 11/05/1989 & Rostov (centre) & 47.222, 39.719 & 40 & 1009.7\\
+41 & Moiseyev & 20/06/1989 & Kolchugino & 56.300, 39.383 & 60 & 1004.6\\
+42 & Varga & 19/08/1989 & near Rostov (Aksay) & 47.270, 39.870 & 9 & 55.3\\
+43 & Khobotov & 28/08/1989 & Shakhty & 47.709, 40.216 & 139 & 0.0\\
+44 & Kravchenko & 14/01/1990 & Shakhty & 47.709, 40.216 & 52 & 67.5\\
+45 & Makarov & 07/03/1990 & Rostov (Botanical Garden) & 47.234, 39.656 & 28 & 75.2\\
+46 & Zuyeva & 04/04/1990 & Donleskhoz st. & 47.840, 40.100 & 115 & 75.2\\
+47 & Petrov & 28/07/1990 & Rostov (Botanical Garden) & 47.234, 39.656 & 17 & 39.1\\
+48 & Fomin & 14/08/1990 & Novocherkassk & 47.411, 40.104 & 64 & 47.7\\
+49 & Gromov & 17/10/1990 & Donleskhoz st. & 47.840, 40.100 & 13 & 12.5\\
+50 & Tishchenko & 30/10/1990 & Kirpichnaya st. & 47.735, 40.160 & 7 & 12.5\\
+51 & Korostik & 06/11/1990 & Donleskhoz st. & 47.840, 40.100 & --- & ---\\
+\bottomrule
+\end{longtable}}
+
+{\footnotesize
+\begin{longtable}{rllp{3.1cm}p{3.1cm}crr}
+\caption{Gary Ridgway: chronology of the 44 dated victims of the 2003 plea. Coordinates are those of the body-recovery site. $\dagger$: approximate date (see S1).\newline Source: Authors' own work}\\
+\toprule
+\# & Victim & Last seen & Last-sighting area & Body-recovery site & Latitude, Longitude & $T_i$ (d) & $D_i$ (km)\\
+\midrule
+\endfirsthead
+\toprule
+\# & Victim & Last seen & Last-sighting area & Body-recovery site & Latitude, Longitude & $T_i$ (d) & $D_i$ (km)\\
+\midrule
+\endhead
+1 & Coffield & 08/07/1982 & Tacoma & Green River, Kent & 47.390, $-122.250$ & 9 & 5.2\\
+2 & Lovvorn & 17/07/1982 & Pacific Hwy S (Sea-Tac strip) & S of Sea-Tac airport & 47.422, $-122.300$ & 8 & 5.2\\
+3 & Bonner & 25/07/1982 & Pacific Hwy S (Sea-Tac strip) & Green River, Kent & 47.390, $-122.250$ & 7 & 0.0\\
+4 & Chapman & 01/08/1982 & Pacific Hwy S (Sea-Tac strip) & Green River, Kent & 47.390, $-122.250$ & 10 & 0.0\\
+5 & Hinds & 11/08/1982 & Pacific Hwy S (Sea-Tac strip) & Green River, Kent & 47.390, $-122.250$ & 1 & 0.0\\
+6 & Mills & 12/08/1982 & Pacific Hwy S (Sea-Tac strip) & Green River, Kent & 47.390, $-122.250$ & 17 & 4.7\\
+7 & Milligan & 29/08/1982 & Pacific Hwy S (Sea-Tac strip) & Star Lake & 47.357, $-122.289$ & 17 & 13.1\\
+8 & Meehan & 15/09/1982 & Pacific Hwy S (Sea-Tac strip) & S Seattle suburbs & 47.470, $-122.340$ & 5 & 16.6\\
+9 & Estes & 20/09/1982 & Pacific Hwy S (Sea-Tac strip) & Federal Way & 47.322, $-122.312$ & 6 & 44.3\\
+10 & Rule & 26/09/1982 & Aurora Ave N & N Seattle & 47.720, $-122.335$ & 12 & 27.8\\
+11 & Bush & 08/10/1982 & Pacific Hwy S (Sea-Tac strip) & Tukwila & 47.475, $-122.260$ & 1 & 3.8\\
+12 & Summers & 09/10/1982 & downtown Seattle & N of Sea-Tac airport & 47.470, $-122.310$ & 11 & 229.5\\
+13 & Sherrill & 20/10/1982$^\dagger$ & International District & Tigard, OR & 45.431, $-122.772$ & 65 & 201.2\\
+14 & Brockman & 24/12/1982$^\dagger$ & Pacific Hwy S (Sea-Tac strip) & Sumner & 47.203, $-122.240$ & 69 & 17.5\\
+15 & A. Smith & 03/03/1983 & Pacific Hwy S (Sea-Tac strip) & Star Lake & 47.357, $-122.289$ & 5 & 0.0\\
+16 & Williams & 08/03/1983 & Pacific Hwy S (Sea-Tac strip) & Star Lake & 47.357, $-122.289$ & 33 & 0.0\\
+17 & Mathews & 10/04/1983 & Pacific Hwy S (Sea-Tac strip) & Star Lake & 47.357, $-122.289$ & 6 & 7.3\\
+18 & Childers & 16/04/1983 & Pacific Hwy S (Sea-Tac strip) & S of Sea-Tac airport & 47.422, $-122.300$ & 1 & 7.3\\
+19 & Gabbert & 17/04/1983 & Pacific Hwy S (Sea-Tac strip) & Star Lake & 47.357, $-122.289$ & 0 & 10.0\\
+20 & Pitsor & 17/04/1983 & downtown Seattle & Auburn cemetery & 47.293, $-122.195$ & 13 & 2.0\\
+21 & Malvar & 30/04/1983 & Pacific Hwy S (Sea-Tac strip) & Auburn & 47.305, $-122.215$ & 3 & 16.0\\
+22 & Christensen & 03/05/1983 & Pacific Hwy S (Sea-Tac strip) & Maple Valley & 47.393, $-122.047$ & 19 & 21.4\\
+23 & Authorlee & 22/05/1983 & Pacific Hwy S (Sea-Tac strip) & Enumclaw & 47.204, $-121.992$ & 1 & 38.1\\
+24 & Wims & 23/05/1983 & downtown Seattle & N of Sea-Tac airport & 47.470, $-122.310$ & 8 & 25.5\\
+25 & Antosh & 31/05/1983 & Pacific Hwy S (Sea-Tac strip) & Lake Sawyer & 47.335, $-122.036$ & 2 & 19.2\\
+26 & Rois & 02/06/1983$^\dagger$ & south Seattle suburbs & Star Lake & 47.357, $-122.289$ & 6 & 7.3\\
+27 & Naon & 08/06/1983 & Pacific Hwy S (Sea-Tac strip) & S of Sea-Tac airport & 47.422, $-122.300$ & 41 & 6.1\\
+28 & Ware & 19/07/1983 & downtown Seattle & S Seattle suburbs & 47.470, $-122.340$ & 6 & 39.2\\
+29 & Thompson & 25/07/1983 & Pacific Hwy S (Sea-Tac strip) & SR18 / I-90 & 47.500, $-121.820$ & 24 & 2.7\\
+30 & Buttram & 18/08/1983 & south Seattle suburbs & Snoqualmie & 47.520, $-121.800$ & 18 & 39.1\\
+31 & Abernathy & 05/09/1983 & downtown Seattle & SR410, 12 mi E of Enumclaw & 47.170, $-121.750$ & 7 & 46.5\\
+32 & Winston & 12/09/1983 & Northgate & Kent (Cottonwood Park) & 47.405, $-122.260$ & 16 & 41.2\\
+33 & Feeney & 28/09/1983 & downtown Seattle & I-90 near North Bend & 47.470, $-121.720$ & 13 & 33.7\\
+34 & Bello & 11/10/1983 & Pacific Hwy S (Sea-Tac strip) & SR410 E of Enumclaw & 47.180, $-121.850$ & 15 & 5.5\\
+35 & Avent & 26/10/1983 & downtown Seattle & SR410 near Enumclaw & 47.195, $-121.920$ & 4 & 33.6\\
+36 & Plager & 30/10/1983 & south Seattle suburbs & I-90 E of North Bend & 47.430, $-121.640$ & 2 & 7.5\\
+37 & Nelson & 01/11/1983 & Pacific Hwy S (Sea-Tac strip) & I-90 near North Bend & 47.470, $-121.720$ & 52 & 7.5\\
+38 & Yates & 23/12/1983 & south Seattle & I-90 E of North Bend & 47.430, $-121.640$ & 45 & 48.0\\
+39 & West & 06/02/1984 & south Seattle & Seward Park, Seattle & 47.550, $-122.253$ & 44 & 27.0\\
+40 & C. Smith & 21/03/1984 & Pacific Hwy S (Sea-Tac strip) & SR18 near GRCC, Auburn & 47.312, $-122.180$ & 940 & 2.8\\
+41 & Barczak & 17/10/1986$^\dagger$ & Pacific Hwy S (Sea-Tac strip) & Auburn & 47.305, $-122.215$ & 113 & 30.9\\
+42 & Hayes & 07/02/1987$^\dagger$ & Portland, OR (jail) & SR410 E of Enumclaw & 47.180, $-121.850$ & 1122 & 5.5\\
+43 & Reeves & 05/03/1990$^\dagger$ & Pacific Hwy S (Sea-Tac strip) & SR410 near Enumclaw & 47.195, $-121.920$ & 2873 & 40.6\\
+44 & Yellow Robe & 15/01/1998$^\dagger$ & Pacific Hwy S (Sea-Tac strip) & Des Moines Way S & 47.450, $-122.305$ & --- & ---\\
+\bottomrule
+\end{longtable}}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Kendall's $\hat\tau$ between intervals and displacements in the main and sensitivity analyses (asymptotic two-sided $p$-values).\newline Source: Authors' own work}
+\begin{tabular}{lrrr}
+\toprule
+Series and variant & $n$ & $\hat\tau$ & $p$\\
+\midrule
+Sutcliffe, main analysis & 19 & $-0.076$ & $0.649$\\
+Chikatilo, main analysis & 50 & $0.202$ & $0.038$\\
+\quad custody (13/09--12/12/1984) deducted & 50 & $0.200$ & $0.040$\\
+\quad 43 convictions upheld in 1993 & 41 & $0.250$ & $0.021$\\
+Ridgway, main analysis (body-recovery sites) & 43 & $0.088$ & $0.406$\\
+\quad encounter (last-sighting) areas & 43 & $-0.003$ & $0.977$\\
+\quad dates of other public lists & 43 & $0.094$ & $0.374$\\
+\quad including Rebecca Marrero (49th victim) & 44 & $0.078$ & $0.455$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{S2. Additional analyses (second revision)}
+\textbf{Zero displacements (Table S5).} A recorded displacement of zero means that two consecutive offences were assigned the same locality or recovery cluster; the true distance is small but unknown. Rank-based analyses treat these zeros as tied smallest values and do not depend on any value assigned to them. The log-normal distribution gives no probability to zero, so for the parametric fits (Table~4 of the paper) and the IFM estimates that depend on them (Table~6 and Figure~1) the zeros were set to 1~km. Table~S5 repeats these fits with values from 0.1 to 5~km and with the zeros treated as left-censored. With every replacement value the log-normal remains preferred to the exponential and the IFM estimates change little, and the censored fits give similar log-normal parameters; no conclusion of the paper depends on this choice.
+
+\textbf{Stability of the trigger (Table S6).} Bootstrap intervals for the operational parameters are given in Table~7 of the paper (2,000 resamples of the pairs $(T_i,D_i)$; seed 2026). Table~S6 shows how the empirical 85th percentile of the intervals, and three times the median interval, would have evolved as offences were linked. With 14 intervals (15 offences), the probability that all of them lie below the true 85th percentile is $0.85^{14}\approx0.10$; in the three series the estimates available after 15 offences differed from those of the complete series by factors of up to 2.6, whereas three times the median varied less.
+
+\begin{table}[htbp]
+\centering\footnotesize\setlength{\tabcolsep}{4pt}
+\caption{Sensitivity of the parametric fits of the displacements and of the IFM copula estimates to the value assigned to zero displacements (consecutive offences recorded at the same locality or recovery cluster); the value used in the paper (1~km) is in bold. `Censored' rows treat these displacements as left-censored below the stated value (log-normal fit only). Rank-based results (Kendall's $\tau$, Spearman's $\rho_S$, CML estimates, goodness-of-fit tests and Table~7 of the paper) use the recorded zeros as tied smallest values and do not depend on this choice.\newline Source: Authors' own work}
+\begin{tabular}{lcccccccc}
+\toprule
+ & \multicolumn{2}{c}{Log-normal} & \multicolumn{2}{c}{AIC} & \multicolumn{4}{c}{IFM copula estimates}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-9}
+Zero displacement & $\hat\mu$ & $\hat\sigma$ & Log-normal & Exponential & Gaussian $\hat\rho$ & Student-$t$ $\hat\rho$ ($\hat\nu$) & Clayton $\hat\theta$ & Gumbel $\hat\theta$\\
+\midrule
+\multicolumn{9}{l}{\textit{Chikatilo} (5 zeros; smallest positive displacement 5.1~km; $\hat\tau=0.202$, CML Gumbel $\hat\theta=1.236$)}\\
+0.1~km & 3.81 & 2.60 & 622.7 & 686.4 & 0.067 & 0.269 (13.0) & 0.000 & 1.201\\
+0.5~km & 3.97 & 2.24 & 623.9 & 686.4 & 0.057 & 0.288 (11.5) & 0.000 & 1.183\\
+\textbf{1~km} & \textbf{4.04} & \textbf{2.10} & \textbf{624.4} & \textbf{686.5} & \textbf{0.052} & \textbf{0.293 (11.1)} & \textbf{0.000} & \textbf{1.174}\\
+2~km & 4.11 & 1.97 & 625.1 & 686.5 & 0.045 & 0.295 (10.8) & 0.000 & 1.163\\
+5~km & 4.20 & 1.83 & 626.6 & 686.6 & 0.034 & 0.288 (10.8) & 0.000 & 1.148\\
+censored $<2$~km & 4.02 & 2.16 & --- & --- & --- & --- & --- & ---\\
+censored $<5$~km & 4.11 & 2.00 & --- & --- & --- & --- & --- & ---\\
+\midrule
+\multicolumn{9}{l}{\textit{Ridgway} (5 zeros; smallest positive displacement 2.0~km; $\hat\tau=0.088$, CML Gumbel $\hat\theta=1.092$)}\\
+0.1~km & 2.16 & 1.92 & 368.1 & 369.9 & 0.068 & 0.078 (60.0) & 0.000 & 1.038\\
+0.5~km & 2.35 & 1.52 & 363.7 & 370.1 & 0.068 & 0.076 (60.0) & 0.000 & 1.025\\
+\textbf{1~km} & \textbf{2.43} & \textbf{1.36} & \textbf{361.5} & \textbf{370.3} & \textbf{0.067} & \textbf{0.073 (60.0)} & \textbf{0.000} & \textbf{1.018}\\
+2~km & 2.51 & 1.23 & 359.7 & 370.7 & 0.065 & 0.069 (60.0) & 0.000 & 1.010\\
+5~km & 2.61 & 1.10 & 359.3 & 371.8 & 0.059 & 0.058 (60.0) & 0.000 & 1.000\\
+censored $<2$~km & 2.43 & 1.37 & --- & --- & --- & --- & --- & ---\\
+censored $<5$~km & 2.53 & 1.21 & --- & --- & --- & --- & --- & ---\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Stability of the trigger. Empirical 85th percentile of the intervals ($t_{85}$) and three times the median interval, in days, as they would have been estimated after the first $k$ linked offences ($k-1$ intervals); the last column of each row gives the values for the complete series and the percentile of the observed intervals to which three times the median corresponds.\newline Source: Authors' own work}
+\begin{tabular}{llcccccc}
+\toprule
+Series & & $k=15$ & $k=20$ & $k=25$ & $k=30$ & $k=40$ & Complete series\\
+\midrule
+Sutcliffe ($n=19$) & $t_{85}$ & 118 & --- & --- & --- & --- & 187\\
+ & $3\times t_{50}$ & 230 & --- & --- & --- & --- & 228 (84th percentile)\\
+Chikatilo ($n=50$) & $t_{85}$ & 215 & 124 & 76 & 62 & 203 & 131\\
+ & $3\times t_{50}$ & 69 & 96 & 69 & 57 & 84 & 90 (82nd percentile)\\
+Ridgway ($n=43$) & $t_{85}$ & 19 & 22 & 18 & 23 & 35 & 50\\
+ & $3\times t_{50}$ & 28 & 24 & 24 & 24 & 27 & 33 (77th percentile)\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\clearpage
+\section*{S3. References}
+Bilton, M. (2003). \textit{Wicked Beyond Belief}. HarperCollins, London.\\
+Conradi, P. (1992). \textit{The Red Ripper}. True Crime, London.\\
+Cross, R. (1981). \textit{The Yorkshire Ripper}. Granada, London.\\
+Cullen, R. (1993). \textit{The Killer Department}. Pantheon, New York.\\
+Krivich, M. and Ol'gin, O. (1993). \textit{Comrade Chikatilo}. Barricade Books, Fort Lee.\\
+Maleng, N. (2003). \textit{Prosecutor's Summary of the Evidence: State of Washington v.\ Gary Leon Ridgway}. King County Superior Court.\\
+Associated Press (2003). Victims of Green River Killer, 5 November 2003.\\
+Wikipedia (2026). Andrei Chikatilo --- Victims. \url{https://en.wikipedia.org/wiki/Andrei_Chikatilo} (accessed 24 September 2026).
+\end{document}
